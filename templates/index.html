@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Rights Adviser</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    
+</head>
+<body>
+    <!-- Sidebar for Chat History -->
+    <div class="sidebar">
+        <h3>📚 Query History</h3>
+        <div class="chat-history">
+            <!-- {% for query in queries %}
+                <p onclick="loadChat('{{ query.query }}', '{{ query.response }}')">
+                    {{ query.query }} - {{ query.created_at.strftime('%Y-%m-%d %H:%M') }}
+                </p>
+            {% endfor %} -->
+        </div>
+    </div>
+
+    <!-- Main Chat Interface -->
+    <div class="main-container">
+        <!-- Header Section with User Info and Logout Button -->
+        <div class="header">
+            <div class="user-info">
+                <img src="{{ url_for('static', filename='images/profile.png') }}" alt="User Logo">
+                <!-- <span>{{ user_name }}</span> -->
+                 <span>Raj</span>
+            </div>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <!-- Chat Box -->
+        <h1>🕊️ Human Rights Adviser</h1>
+        <div id="chat-box">
+            <div id="chat-history"></div>
+        </div>
+
+        <!-- User Input and Button -->
+         <form action="" method="post"></form>
+        <textarea id="user-query" rows="3" placeholder="Enter your query about human rights..."></textarea>
+        <button id="submit-btn">Ask</button>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- <script>
+        // Load previous chat when a query is clicked
+        function loadChat(query, response) {
+            const chatBox = document.getElementById('chat-history');
+            chatBox.innerHTML = `<p><strong>User:</strong> ${query}</p>
+                                 <p><strong>Bot:</strong> ${response}</p>
+                                 <hr />`;
+        }
+
+        // Submit query on button click or pressing Enter
+        function sendQuery() {
+            const query = document.getElementById('user-query').value.trim();
+            if (query !== "") {
+                const chatBox = document.getElementById('chat-history');
+                chatBox.innerHTML += `<p><strong>User:</strong> ${query}</p>`;
+                document.getElementById('user-query').value = "";
+
+                // Simulate bot response (replace with actual API call if needed)
+                setTimeout(function () {
+                    const response = "This is a sample response about human rights.";
+                    chatBox.innerHTML += `<p><strong>Bot:</strong> ${response}</p><hr />`;
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        // Handle Enter key press
+        document.getElementById('user-query').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendQuery();
+            }
+        });
+
+        // Handle button click to send query
+        document.getElementById('submit-btn').addEventListener('click', function () {
+            sendQuery();
+        });
+
+        // Logout functionality (redirect to login page or perform other actions)
+        function logout() {
+            window.location.href = "/logout"; // Redirect to logout URL
+        }
+    </script> -->
+</body>
+</html>

@@ -1,0 +1,88 @@
+document.getElementById("submit-btn").addEventListener("click", function () {
+    let query = document.getElementById("user-query").value.trim();
+    if (query === "") {
+        alert("Please enter a query.");
+        return;
+    }
+
+    // Display the user's query in chat
+    displayMessage(query, "user");
+
+    // Send query to Flask backend
+    fetch("/get_response", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: query })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            displayMessage(data.response, "bot");
+        } else {
+            displayMessage("Sorry, I couldn't process that query.", "bot");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        displayMessage("Something went wrong. Try again!", "bot");
+    });
+
+    // Clear input field after sending
+    document.getElementById("user-query").value = "";
+});
+
+// Function to format the response with proper HTML
+function formatResponse(response) {
+    // Replace **bold text** with <strong> tags
+    response = response.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+    // Add line breaks for each new line
+    response = response.replace(/\n/g, "<br>");
+
+    // Handle numbered lists (1., 2., etc.)
+    response = response.replace(/(\d+)\.\s(.*?)(?=\n|$)/g, "<li>$2</li>");
+
+    // Wrap numbered lists in <ol> tags
+    response = response.replace(/(<li>.*<\/li>)/g, "<ol>$1</ol>");
+
+    // Handle bullet lists (* Item 1, * Item 2)
+    response = response.replace(/\*\s(.*?)(?=\n|$)/g, "<li>$1</li>");
+
+    // Wrap bullet lists in <ul> tags
+    response = response.replace(/(<li>.*<\/li>)/g, "<ul>$1</ul>");
+
+    return response;
+}
+
+// Modified function to display messages with formatted bot response
+function displayMessage(msg, sender) {
+    let chatBox = document.getElementById("chat-history");
+    let msgDiv = document.createElement("div");
+    msgDiv.className = sender === "user" ? "user-msg" : "bot-msg";
+
+    // Check if it's a bot response and format it
+    if (sender === "bot") {
+        msgDiv.innerHTML = formatResponse(msg);
+    } else {
+        msgDiv.textContent = msg;
+    }
+
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+
+// Function to display messages in the chatbox
+// function displayMessage(msg, sender) {
+//     let chatBox = document.getElementById("chat-history");
+//     let msgDiv = document.createElement("div");
+//     msgDiv.className = sender === "user" ? "user-msg" : "bot-msg";
+//     msgDiv.textContent = msg;
+//     chatBox.appendChild(msgDiv);
+//     chatBox.scrollTop = chatBox.scrollHeight;
+// }
+
+// Logout functionality (redirect to login page or perform other actions)
+function logout() {
+    window.location.href = "/logout"; // Redirect to logout URL
+}
