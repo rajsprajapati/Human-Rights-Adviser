@@ -9,7 +9,8 @@ app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Use a strong key in production
 
 # Configure the database
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///D:/sem 6/6_Sem_Project/RAG_HumanRights_Chatbot/instance/site.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:raj12345@localhost:5432/rag_human_rights"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///D:/sem 6/6_Sem_Project/RAG_HumanRights_Chatbot/instance/site.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
@@ -45,6 +46,7 @@ def register():
         password = request.form["password"]
         hashed_password = generate_password_hash(password)
         
+        # new_user = User(email=email, password=hashed_password)
         new_user = User(username=username, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
@@ -72,7 +74,7 @@ def get_response():
 
     try:
         response = process_query(query)
-        print(response)
+        # print(response, type(response))
         # Save query to database
         new_query = QueryLog(user_id=session["user_id"], query=query, response=response)
         # new_log = QueryLog(user_id=current_user.id, query=user_query, response=response, created_at=datetime.now())
