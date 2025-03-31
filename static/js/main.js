@@ -18,6 +18,15 @@ document.getElementById("submit-btn").addEventListener("click", function () {
     .then(data => {
         if (data.success) {
             displayMessage(data.response, "bot");
+            // if (Array.isArray(data.response)) {
+            //     // Loop through list if response is an array and display each
+            //     data.response.forEach(item => {
+            //         displayMessage(item, "bot");
+            //     });
+            // } else {
+            //     // Display normal response if it's a string
+            //     displayMessage(data.response, "bot");
+            // }
         } else {
             displayMessage("Sorry, I couldn't process that query.", "bot");
         }
@@ -36,7 +45,8 @@ function displayMessage(msg, sender) {
     let chatBox = document.getElementById("chat-history");
     let msgDiv = document.createElement("div");
     msgDiv.className = sender === "user" ? "user-msg" : "bot-msg";
-    msgDiv.textContent = msg;
+    // msgDiv.textContent = msg;
+     msgDiv.innerHTML = `<p><strong>${sender === "user" ? "User:" : "Adviser:"}</strong> ${msg}</p>`;
     chatBox.appendChild(msgDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
 }

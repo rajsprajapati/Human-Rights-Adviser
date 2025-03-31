@@ -214,8 +214,11 @@ def process_query(query):
         print("\nFinal Answer:")
         # for line in res:
             # print(line)
+        # Write the Markdown text to result.md file
         if isinstance(res, list):
             response = "\n".join(res)
+            with open("models/result.md", "w", encoding="utf-8") as file:
+                file.write(response)
             return response
     except Exception as e:
         print(f"Error: {e}. Please try again.")
