@@ -22,7 +22,10 @@ db.init_app(app)
 def index():
     if "user_id" not in session:
         return redirect(url_for("login"))
-    return render_template("index.html")
+
+    username = session.get("username", "User")  # Default to "User" if not found
+    return render_template("index.html", username=username)
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -33,10 +36,12 @@ def login():
 
         if user and check_password_hash(user.password, password):
             session["user_id"] = user.id
+            session["username"] = user.username  # Store the username in session
             return redirect(url_for("index"))
         else:
             return render_template("login.html", error="Invalid email or password.")
     return render_template("login.html")
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -56,7 +61,9 @@ def register():
 @app.route("/logout")
 def logout():
     session.pop("user_id", None)
+    session.pop("username", None)  # Remove username from session
     return redirect(url_for("login"))
+
 
 # ----------------------
 # Query Handling Route

@@ -1,35 +1,14 @@
-Forcing a 12-year-old child to work in a factory under hazardous conditions for long hours without proper compensation constitutes a severe violation of international human rights laws.
+This scenario describes a potential violation of the Convention on the Elimination of All Forms of Discrimination Against Women (CEDAW).
 
-Here's a breakdown of the relevant legal protections and steps to take:
+Specifically, this could be a violation of:
 
-1.  **Convention on the Rights of the Child (CRC):**
+*   **Article 11** of CEDAW, which addresses discrimination in employment. Article 11(1) calls on States Parties to take all appropriate measures to eliminate discrimination against women in the field of employment in order to ensure, on a basis of equality of men and women, the same rights, in particular: (a) The right to work; (b) The right to the same employment opportunities, including the application of the same criteria for selection in matters of employment.
 
-    *   **Article 32:** This article protects children from economic exploitation and from performing any work that is likely to be hazardous or to interfere with the child's education, health, or physical, mental, spiritual, moral, or social development.
-    *   **Article 36:** Protects the child against all other forms of exploitation prejudicial to the child's welfare.
+**Steps the woman can take:**
 
-2.  **Universal Declaration of Human Rights (UDHR):**
+1.  **Gather Evidence:** Collect any performance reviews, emails, or documents that demonstrate her high performance and qualifications. Also, gather any evidence suggesting the male colleague was less qualified or experienced.
+2.  **Internal Grievance Procedure:** If her workplace has an internal grievance procedure, she should file a formal complaint, detailing the discrimination.
+3.  **National Human Rights Institutions:** She can file a complaint with the relevant national human rights commission or ombudsman's office in her country. These institutions are often mandated to investigate discrimination cases.
+4.  **Legal Action:** Consult with an attorney to explore legal options. Depending on the jurisdiction, she may be able to file a lawsuit for gender discrimination.
+5.  **Report to CEDAW Committee:** If national remedies are exhausted or ineffective, she may be able to submit a communication to the CEDAW Committee, if her country is a party to the Optional Protocol to CEDAW.
 
-    *   **Article 24:** States that everyone has the right to rest and leisure, including reasonable limitation of working hours and periodic holidays with pay. This right is particularly important for children, whose developmental needs require adequate rest and leisure.
-
-3.  **International Covenant on Economic, Social and Cultural Rights (ICESCR):**
-
-    *   **Article 10:** Specifies that special protection and assistance should be accorded to children and young persons. Children should be protected from economic and social exploitation. The employment of children in work harmful to their morals or health or dangerous to life or likely to hamper their normal development should be punishable by law.
-
-**Steps to Take:**
-
-1.  **Report to National Authorities:**
-    *   **Child Protection Services:** Report the situation to local child protection services or social welfare agencies.
-    *   **Labor Inspectorate:** Inform the labor inspectorate about the illegal child labor practices.
-    *   **Law Enforcement:** Report the matter to the police, as this constitutes a criminal offense.
-
-2.  **Contact Human Rights Organizations:**
-    *   **Local and International NGOs:** Reach out to human rights organizations that specialize in child rights and labor rights. They can provide legal assistance, advocacy, and support.
-
-3.  **Legal Action:**
-    *   **Seek Legal Representation:** Obtain legal counsel to explore options for legal action against the employer and any complicit parties.
-    *   **File a Complaint:** File a formal complaint with national human rights institutions or ombudsman offices.
-
-4.  **International Mechanisms:**
-    *   **UN Human Rights Bodies:** If national remedies are ineffective, consider reporting the violation to relevant UN human rights bodies, such as the Committee on the Rights of the Child.
-
-**Note:** Child labor is a grave violation, and immediate action is crucial to protect the child's well-being and rights. Ensure the child is removed from the hazardous environment and provided with necessary medical, psychological, and social support.
