@@ -45,11 +45,14 @@ function displayMessage(msg, sender) {
     let chatBox = document.getElementById("chat-history");
     let msgDiv = document.createElement("div");
     msgDiv.className = sender === "user" ? "user-msg" : "bot-msg";
-    // msgDiv.textContent = msg;
-     msgDiv.innerHTML = `<p><strong>${sender === "user" ? "User:" : "Adviser:"}</strong> ${msg}</p>`;
+
+    // Use innerHTML instead of textContent to render HTML properly
+    msgDiv.innerHTML = `<p><strong>${sender === "user" ? "User:" : "Adviser:"}</strong></p><div>${msg}</div>`;
+    
     chatBox.appendChild(msgDiv);
     chatBox.scrollTop = chatBox.scrollHeight;
 }
+
 
 // Logout functionality (redirect to login page or perform other actions)
 function logout() {
