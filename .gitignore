@@ -2,3 +2,5 @@ models/.env
 **/__pycache__/
 instance/site.db
 js/mainjs.txt
+
+.env
