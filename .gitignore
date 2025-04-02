@@ -3,4 +3,4 @@ models/.env
 instance/site.db
 js/mainjs.txt
 
-.env
+.env".env" 
