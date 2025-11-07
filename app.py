@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Use a strong key in production
 
 # Configure the database
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:postAnuj02@localhost:5432/rag_human_rights"
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://postgres:raj12345@localhost:5432/rag_human_rights"
 # app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///D:/sem 6/6_Sem_Project/RAG_HumanRights_Chatbot/instance/site.db"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -22,10 +22,7 @@ db.init_app(app)
 def index():
     if "user_id" not in session:
         return redirect(url_for("login"))
-
-    username = session.get("username", "User")  # Default to "User" if not found
-    return render_template("index.html", username=username)
-
+    return render_template("index.html")
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -36,12 +33,10 @@ def login():
 
         if user and check_password_hash(user.password, password):
             session["user_id"] = user.id
-            session["username"] = user.username  # Store the username in session
             return redirect(url_for("index"))
         else:
             return render_template("login.html", error="Invalid email or password.")
     return render_template("login.html")
-
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -61,15 +56,11 @@ def register():
 @app.route("/logout")
 def logout():
     session.pop("user_id", None)
-    session.pop("username", None)  # Remove username from session
     return redirect(url_for("login"))
-
 
 # ----------------------
 # Query Handling Route
 # ----------------------
-import markdown
-
 @app.route("/get_response", methods=["POST"])
 def get_response():
     if "user_id" not in session:
@@ -82,17 +73,15 @@ def get_response():
         return jsonify({"success": False, "response": "No query provided."})
 
     try:
-        response = process_query(query)  # Get response from chatbot
-        
-        # Convert markdown to HTML before sending
-        formatted_response = markdown.markdown(response)
-
+        response = process_query(query)
+        # print(response, type(response))
         # Save query to database
-        new_query = QueryLog(user_id=session["user_id"], query=query, response=formatted_response)
+        new_query = QueryLog(user_id=session["user_id"], query=query, response=response)
+        # new_log = QueryLog(user_id=current_user.id, query=user_query, response=response, created_at=datetime.now())
         db.session.add(new_query)
         db.session.commit()
 
-        return jsonify({"success": True, "response": formatted_response})
+        return jsonify({"success": True, "response": response})
     except Exception as e:
         print(f"Error: {e}")
         return jsonify({"success": False, "response": "Error processing query."})
